@@ -11,36 +11,8 @@
 
 <body>
   <main class="flex p-4 gap-4 h-screen">
-    <section class="sidebar min-w-56 w-1/5 pt-7 px-4 pb-4 border border-solid border-black rounded-lg space-y-4">
-      <div class="max-w-40 mx-auto mb-10">
-        <img src="../public/images/powerup-logo.png" alt="powerup-logo">
-      </div>
-      <% buttons.map(button => { %>
-      <%- include('partials/sidebar_button', { text: button.text, route: button.route, currentRoute: currentRoute, isActive: isActiveRoute(currentRoute, button.route) }) %>
-      <% }) %>
-    </section>
-    <section class="main w-4/5 border border-solid border-black p-10 rounded-lg">
-      <h1 class="font-bold text-3xl mb-10"><%=title%></h1>
-      <div class="flex gap-4">
-        <%- include("partials/summary_card", {title: "No. of Games", quantity: "25"})%>
-        <%- include("partials/summary_card", {title: "No. of Games", quantity: "25"})%>
-        <%- include("partials/summary_card", {title: "No. of Games", quantity: "25"})%>
-      </div>
-      <hr class="border my-10">
-      <div>
-        <div class="flex justify-between mb-10">
-          <h2 class="font-bold text-2xl">Recent</h2>
-          <%- include("partials/button", {text: "View All"}) %>
-        </div>
-        <div class="grid grid-cols-1 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-4 ">
-          <%- include("partials/game_card")%>
-          <%- include("partials/game_card")%>
-          <%- include("partials/game_card")%>
-          <%- include("partials/game_card")%>
-          <%- include("partials/game_card")%>
-        </div>
-      </div>
-    </section>
+    <%- include('sidebar') %>
+    <%- include('body') %>
   </main>
 </body>
 

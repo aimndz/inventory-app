@@ -7,6 +7,7 @@ const getHomePage = asyncHandler(async (req, res) => {
 
   res.render("index", {
     title: "Summary",
+    content: "summary",
     buttons: buttonsData,
     currentRoute,
     isActiveRoute });

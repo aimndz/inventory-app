@@ -1,0 +1,8 @@
+<section class="sidebar min-w-56 w-1/5 pt-7 px-4 pb-4 border border-solid border-black rounded-lg space-y-4">
+  <div class="max-w-40 mx-auto mb-10">
+    <img src="../public/images/powerup-logo.png" alt="powerup-logo">
+  </div>
+  <% buttons.map(button => { %>
+  <%- include('partials/sidebar_button', { text: button.text, route: button.route, currentRoute: currentRoute, isActive: isActiveRoute(currentRoute, button.route) }) %>
+  <% }) %>
+</section>

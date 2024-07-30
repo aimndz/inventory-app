@@ -7,6 +7,7 @@ const getAllGames = asyncHandler(async (req, res) => {
 
   res.render("index", {
     title: "Games",
+    content: "games",
     buttons: buttonsData,
     currentRoute,
     isActiveRoute });

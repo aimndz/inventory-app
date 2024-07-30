@@ -5,8 +5,9 @@ const  buttonsData = require("../public/javascript/constant");
 const getAllDevelopers = asyncHandler(async (req, res) => {
   const currentRoute = req.originalUrl.split('?')[0]; 
 
-  res.render("developers", {
+  res.render("index", {
     title: "Developers",
+    content: "developers",
     buttons: buttonsData,
     currentRoute,
     isActiveRoute });
