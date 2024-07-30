@@ -6,6 +6,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title><%=title%></title>
   <link rel="stylesheet" href="../public/styles/output.css" />
+  <script src="../public/javascript/helper.js" defer></script>
 </head>
 
 <body>
@@ -14,10 +15,9 @@
       <div class="max-w-40 mx-auto mb-10">
         <img src="../public/images/powerup-logo.png" alt="powerup-logo">
       </div>
-      <%- include('partials/sidebar_button', {text: "Summary"}) %>
-      <%- include('partials/sidebar_button', {text: "Games"}) %>
-      <%- include('partials/sidebar_button', {text: "Genres"}) %>
-      <%- include('partials/sidebar_button', {text: "Developers"}) %>
+      <% buttons.map(button => { %>
+      <%- include('partials/sidebar_button', { text: button.text, route: button.route, currentRoute: currentRoute, isActive: isActiveRoute(currentRoute, button.route) }) %>
+      <% }) %>
     </section>
     <section class="main w-4/5 border border-solid border-black p-10 rounded-lg">
       <h1 class="font-bold text-3xl mb-10"><%=title%></h1>

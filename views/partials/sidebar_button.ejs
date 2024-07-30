@@ -1,3 +1,6 @@
-<button class="p-3 border border-solid bg-gray-200 border-black rounded-lg w-full font-bold text-start hover:bg-blue-300 shadow-xl delay-75 transition-all ease-out">
-  <%- text %>
-</button>
+<form action=<%- route %> method="GET">
+  <button class="p-3 border border-solid border-black rounded-lg w-full font-bold text-start hover:bg-blue-400 shadow-xldelay-75 transition-all ease-out
+    <%= isActive ? 'bg-blue-300' : 'bg-gray-300' %>" isActive=<%= currentRoute %>>
+    <%- text %>
+  </button>
+</form>
