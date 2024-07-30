@@ -1,9 +1,9 @@
 <section class="main w-4/5 border border-solid border-black p-10 rounded-lg">
   <h1 class="font-bold text-3xl mb-10"><%=title%></h1>
   <div class="flex gap-4">
-    <%- include("partials/summary_card", {title: "No. of Games", quantity: "25"})%>
-    <%- include("partials/summary_card", {title: "No. of Games", quantity: "25"})%>
-    <%- include("partials/summary_card", {title: "No. of Games", quantity: "25"})%>
+    <%- include("partials/summary_card", {title: "No. of Games", quantity: "25", route: "/games"})%>
+    <%- include("partials/summary_card", {title: "No. of Genres", quantity: "25", route: "/genres"})%>
+    <%- include("partials/summary_card", {title: "No. of Developers", quantity: "25", route: "/developers"})%>
   </div>
   <hr class="border my-10">
   <div>
