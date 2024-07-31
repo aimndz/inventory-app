@@ -21,16 +21,16 @@ const developersData = [
 exports.index = asyncHandler(async (req, res) => {
   res.render("index", {
     title: "Developers",
-    content: "developers",
+    content: "developer/developers",
     developers: developersData,
    });
 });
 
 exports.developer_detail = asyncHandler(async (req, res) => {
   res.render("index", {
-    title: req.params.developerID,
-    content: "developers",
-    content: "developerDetail",
+    title: req.params.id,
+    content: "developer/developer_detail",
+    content: "developer_detail",
    });
 });
 

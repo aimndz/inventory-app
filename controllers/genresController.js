@@ -21,20 +21,38 @@ const genresData = [
 exports.index = asyncHandler(async (req, res) => {
   res.render("index", {
     title: "Genres",
-    content: "genres",
+    content: "genre/genres",
     genres: genresData,
    });
 });
 
 exports.genre_detail = asyncHandler(async (req, res) => {
   res.render("index", {
-    title: req.params.genreID,
-    content: "genreDetail",
+    title: req.params.id,
+    content: "genre/genre_detail",
    });
 });
 
 exports.genre_create_get = asyncHandler(async (req, res) => {
-  
+  // NOT YET IMPLEMENTED
 })
 
+exports.genre_create_post = asyncHandler(async (req, res) => {
+  // NOT YET IMPLEMENTED
+})
 
+exports.genre_update_get = asyncHandler(async (req, res) => {
+  // NOT YET IMPLEMENTED
+})
+
+exports.genre_update_post = asyncHandler(async (req, res) => {
+  // NOT YET IMPLEMENTED
+})
+
+exports.genre_delete_get = asyncHandler(async (req, res) => {
+  // NOT YET IMPLEMENTED
+})
+
+exports.genre_delete_post = asyncHandler(async (req, res) => {
+  // NOT YET IMPLEMENTED
+})
