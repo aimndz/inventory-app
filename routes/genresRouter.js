@@ -3,6 +3,11 @@ const genresController = require("../controllers/genresController");
 
 const genresRouter = Router();
 
-genresRouter.get("/", genresController.getAllGenres);
+// Get all genres
+genresRouter.get("/", genresController.index);
+
+// Get genre details 
+genresRouter.get("/:genreID", genresController.genre_detail);
+
 
 module.exports = genresRouter;

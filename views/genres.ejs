@@ -1,10 +1,15 @@
 <section class="main w-4/5 border border-solid border-black p-10 rounded-lg">
-  <h1 class="font-bold text-3xl mb-10"><%=title%></h1>
+  <div class="flex justify-between mb-10">
+    <h1 class="font-bold text-3xl"><%=title%></h1>
+    <%- include("partials/button", {text: "+ Add"}) %>
+  </div>
   <div>
     <div class="grid grid-cols-1 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-4 ">
-      <%- include('partials/detail_button', {text: "Action", quantity: 12}) %>
-      <%- include('partials/detail_button', {text: "Adventure", quantity: 12}) %>
-      <%- include('partials/detail_button', {text: "Horror", quantity: 12}) %>
+
+      <% genres.map((genre) => { %>
+      <%- include('partials/detail_button', {text: genre.title, quantity: genre.quantity, url: `/genres/${genre.id}`}) %>
+      <% }) %>
+
     </div>
   </div>
 </section>

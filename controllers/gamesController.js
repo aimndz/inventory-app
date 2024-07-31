@@ -1,10 +1,36 @@
 const asyncHandler = require("express-async-handler");
 
-const getAllGames = asyncHandler(async (req, res) => {
+exports.index = asyncHandler(async (req, res) => {
   res.render("index", {
     title: "Games",
     content: "games",
   });
 });
 
-module.exports = { getAllGames };
+exports.game_detail = asyncHandler(async (req, res) => {
+  // NOT YET IMPLEMENTED
+})
+
+exports.game_create_get = asyncHandler(async (req, res) => {
+  // NOT YET IMPLEMENTED
+})
+
+exports.game_create_post = asyncHandler(async (req, res) => {
+  // NOT YET IMPLEMENTED
+})
+
+exports.game_update_get = asyncHandler(async (req, res) => {
+  // NOT YET IMPLEMENTED
+})
+
+exports.game_update_post = asyncHandler(async (req, res) => {
+  // NOT YET IMPLEMENTED
+})
+
+exports.game_delete_get = asyncHandler(async (req, res) => {
+  // NOT YET IMPLEMENTED
+})
+
+exports.game_delete_post = asyncHandler(async (req, res) => {
+  // NOT YET IMPLEMENTED
+})
