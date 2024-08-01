@@ -26,20 +26,24 @@ exports.index = asyncHandler(async (req, res) => {
    });
 });
 
+exports.genre_create_get = asyncHandler(async (req, res) => {
+  res.render("index", {
+    title: "Add New Genre",
+    content: "genre/genre_create",
+   });
+})
+
+exports.genre_create_post = asyncHandler(async (req, res) => {
+  // NOT YET IMPLEMENTED
+})
+
+
 exports.genre_detail = asyncHandler(async (req, res) => {
   res.render("index", {
     title: req.params.id,
     content: "genre/genre_detail",
    });
 });
-
-exports.genre_create_get = asyncHandler(async (req, res) => {
-  // NOT YET IMPLEMENTED
-})
-
-exports.genre_create_post = asyncHandler(async (req, res) => {
-  // NOT YET IMPLEMENTED
-})
 
 exports.genre_update_get = asyncHandler(async (req, res) => {
   // NOT YET IMPLEMENTED

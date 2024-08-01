@@ -30,16 +30,18 @@ exports.developer_detail = asyncHandler(async (req, res) => {
   res.render("index", {
     title: req.params.id,
     content: "developer/developer_detail",
-    content: "developer_detail",
    });
 });
 
 exports.developer_create_get = asyncHandler(async (req, res) => {
-  // NOT YET IMPLEMENTED
+  res.render("index", {
+    title: "Add New Developer",
+    content: "developer/developer_create",
+   });
 })
 
 exports.developer_create_post = asyncHandler(async (req, res) => {
-  // NOT YET IMPLEMENTED
+  
 })
 
 exports.developer_update_get = asyncHandler(async (req, res) => {

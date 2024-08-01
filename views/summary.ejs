@@ -9,14 +9,14 @@
   <div>
     <div class="flex justify-between mb-10">
       <h2 class="font-bold text-2xl">Recent</h2>
-      <%- include("partials/button", {text: "View All"}) %>
+      <%- include("partials/button", {text: "View All", url: "games"}) %>
     </div>
     <div class="grid grid-cols-1 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-4 ">
-      <%- include("partials/game_card")%>
-      <%- include("partials/game_card")%>
-      <%- include("partials/game_card")%>
-      <%- include("partials/game_card")%>
-      <%- include("partials/game_card")%>
+      <%- include("partials/game_card", { url: "games/1"})%>
+      <%- include("partials/game_card", { url: "games/2"})%>
+      <%- include("partials/game_card", { url: "games/3"})%>
+      <%- include("partials/game_card", { url: "games/4"})%>
+      <%- include("partials/game_card", { url: "games/5"})%>
     </div>
   </div>
 </section>

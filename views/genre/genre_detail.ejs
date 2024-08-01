@@ -1,10 +1,23 @@
 <section class="main w-4/5 border border-solid border-black p-10 rounded-lg">
-  <div class="flex justify-between mb-10">
+  <button class="mb-10">
+    <a href="/genres">
+
+      < Back </a>
+  </button>
+  <div class="flex justify-between mb-3">
     <h1 class="font-bold text-3xl"><%=title%></h1>
-    <%- include("../partials/button", {text: "+ Add"}) %>
+    <%- include("../partials/button", {text: "Delete", url: "/games/delete"}) %>
+  </div>
+  <div class="font-bold mb-3">
+    <p>Total: 4</p>
   </div>
   <div>
     <div class="grid grid-cols-1 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-4 ">
+      <%- include("../partials/game_card", { url: "games/1"})%>
+      <%- include("../partials/game_card", { url: "games/2"})%>
+      <%- include("../partials/game_card", { url: "games/3"})%>
+      <%- include("../partials/game_card", { url: "games/4"})%>
+      <%- include("../partials/game_card", { url: "games/5"})%>
     </div>
   </div>
 </section>
