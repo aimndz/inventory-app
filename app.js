@@ -7,18 +7,16 @@ const gamesRouter = require("./routes/gamesRouter");
 const developersRouter = require("./routes/developersRouter");
 
 const {buttonsMiddleware} = require("./middlewares/buttonsMiddleware");
-const {isActiveRouteMiddleware } = require("./middlewares/isActiveRouteMiddleware");
+const {isActiveRouteMiddleware} = require("./middlewares/isActiveRouteMiddleware");
+const {baseRouteMiddleware} = require("./middlewares/baseRouteMiddleware");
 
 const app = express();
 
 
 // Sidebar buttons Middleware
 app.use(buttonsMiddleware);
-app.use(isActiveRouteMiddleware );
-app.use((req, res, next) => {
-    res.locals.currentRoute = req.originalUrl.split('?')[0];
-    next();
-});
+app.use(isActiveRouteMiddleware);
+app.use(baseRouteMiddleware);
 
 
 app.use("/", indexRouter);
