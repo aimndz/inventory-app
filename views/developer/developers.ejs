@@ -7,7 +7,7 @@
     <div class="grid grid-cols-1 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-4 ">
 
       <% developers.map((developer) => { %>
-      <%- include('../partials/detail_button', {text: developer.title, quantity: developer.quantity, url: `/developers/${developer.id}` }) %>
+      <%- include('../partials/detail_button', {text: developer.name, quantity: developer.game_count, url: `/developers/${developer.id}` }) %>
       <% }) %>
 
     </div>

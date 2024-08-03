@@ -1,24 +1,27 @@
 const asyncHandler = require("express-async-handler");
+const db = require("../db/queries");
 
-const developersData = [
-  {
-    id: 1,
-    title: "Activision",
-    quantity: 12,
-  },
-  {
-    id: 2,
-    title: "Nintendo",
-    quantity: 10,
-  },
-  {
-    id: 3,
-    title: "EA",
-    quantity: 5,
-  }
-]
+// const developersData = [
+//   {
+//     id: 1,
+//     title: "Activision",
+//     quantity: 12,
+//   },
+//   {
+//     id: 2,
+//     title: "Nintendo",
+//     quantity: 10,
+//   },
+//   {
+//     id: 3,
+//     title: "EA",
+//     quantity: 5,
+//   }
+// ]
 
 exports.index = asyncHandler(async (req, res) => {
+  const developersData = await db.getDeveloperGameCount();
+  
   res.render("index", {
     title: "Developers",
     content: "developer/developers",
