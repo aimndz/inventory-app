@@ -119,3 +119,22 @@ exports.insertGame = async (game_name, image, release_date, developer, genre, de
 
     await pool.query('INSERT INTO games (name, image, release_date, developer, genre, description) VALUES ($1, $2, $3, $4, $5, $6)', values); 
 }
+
+exports.getAllRecentGames = async () => {
+    const { rows } = await pool.query(
+        `SELECT g.id, g.name, g.image, g.release_date, g.description,
+        ARRAY_AGG(DISTINCT d.name) AS developers,
+        ARRAY_AGG(gr.name) AS genres
+        FROM games g
+        LEFT JOIN developers d ON d.id = ANY(g.developer)
+        LEFT JOIN genres gr ON gr.id = ANY(g.genre)
+        GROUP BY g.id, g.name, g.image, g.release_date, g.description
+        ORDER BY id DESC
+        LIMIT 5;`
+    );
+
+    console.log(rows)
+
+    return rows;
+}
+
