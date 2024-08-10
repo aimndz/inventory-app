@@ -12,22 +12,20 @@ const {baseRouteMiddleware} = require("./middlewares/baseRouteMiddleware");
 
 const app = express();
 
-
 // Sidebar buttons Middleware
 app.use(buttonsMiddleware);
 app.use(isActiveRouteMiddleware);
 app.use(baseRouteMiddleware);
 
+app.set("views", path.join(__dirname, "views"));
+app.set("view engine", "ejs");
+app.use(express.urlencoded({ extended: true }));
+app.use(express.static(path.join(__dirname, "")));
 
 app.use("/", indexRouter);
 app.use("/genres", genresRouter);
 app.use("/games", gamesRouter);
 app.use("/developers", developersRouter);
-
-app.set("views", path.join(__dirname, "views"));
-app.set("view engine", "ejs");
-
-app.use(express.static(path.join(__dirname, "")));
 
 const PORT = 3000;
 app.listen(PORT, () => console.log(`Listening on Port: ${PORT}`));

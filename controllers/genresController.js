@@ -1,24 +1,28 @@
 const asyncHandler = require("express-async-handler");
+const db = require("../db/queries");
+const { body, validationResult } = require("express-validator");
 
-const genresData = [
-  {
-    id: 1,
-    title: "Action",
-    quantity: 12,
-  },
-  {
-    id: 2,
-    title: "Adventure",
-    quantity: 10,
-  },
-  {
-    id: 3,
-    title: "Horror",
-    quantity: 5,
-  }
-]
+// const genresData = [
+//   {
+//     id: 1,
+//     title: "Action",
+//     quantity: 12,
+//   },
+//   {
+//     id: 2,
+//     title: "Adventure",
+//     quantity: 10,
+//   },
+//   {
+//     id: 3,
+//     title: "Horror",
+//     quantity: 5,
+//   }
+// ]
 
 exports.index = asyncHandler(async (req, res) => {
+  const genresData = await db.getGenreGameCount();
+
   res.render("index", {
     title: "Genres",
     content: "genre/genres",
@@ -33,15 +37,47 @@ exports.genre_create_get = asyncHandler(async (req, res) => {
    });
 })
 
-exports.genre_create_post = asyncHandler(async (req, res) => {
-  // NOT YET IMPLEMENTED
-})
+exports.genre_create_post = [ 
+  body("genre_name", "Genre name must contain at least 3 characters")
+    .trim()
+    .isLength({min: 3})
+    .escape(),
+  body("genre_name").custom(async (value) => {
+    const existingGenre = await db.getGenreByName(value.toLowerCase());
+
+    if(existingGenre.length) {
+      throw new Error("Genre name already exists");
+    }
+  }),
+  asyncHandler(async (req, res) => {
+    const errors = validationResult(req);
+    if (!errors.isEmpty()){
+      return res.status(400).render("index", {
+        title: "Add New Genre",
+        content: "genre/genre_create",
+        errors: errors.array()
+      })
+    }
+
+    const {genre_name} = req.body;
+    await db.insertGenre(genre_name);
+    console.log(genre_name)
+    res.redirect("/genres/create");
+  })
+];
 
 
 exports.genre_detail = asyncHandler(async (req, res) => {
+  const [genre, allGenreGames] = await Promise.all([
+    db.getGenreById(req.params.id),
+    db.getGenreGames(req.params.id)
+  ])
+
   res.render("index", {
-    title: req.params.id,
+    title: genre[0].name,
     content: "genre/genre_detail",
+    games: allGenreGames,
+    quantity: allGenreGames.length,
    });
 });
 

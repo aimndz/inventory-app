@@ -9,15 +9,17 @@
     <%- include("../partials/button", {text: "Delete", url: "/games/delete"}) %>
   </div>
   <div class="font-bold mb-3">
-    <p>Total: 4</p>
+    <p>Total: <%= quantity %></p>
   </div>
   <div>
+    <% if (games.length > 0) { %>
     <div class="grid grid-cols-1 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-4 ">
-      <%- include("../partials/game_card", { url: "games/1"})%>
-      <%- include("../partials/game_card", { url: "games/2"})%>
-      <%- include("../partials/game_card", { url: "games/3"})%>
-      <%- include("../partials/game_card", { url: "games/4"})%>
-      <%- include("../partials/game_card", { url: "games/5"})%>
+      <%games.map((game) => { %>
+      <%- include("../partials/game_card", { url: `/games/${game.id}`, image: `data:${game.imageType};base64,${game.image.toString('base64')}`, name:game.name, developer: game.developers})%>
+      <%})%>
     </div>
+    <% } else { %>
+    <%- include("../partials/empty_status")%>
+    <% } %>
   </div>
 </section>

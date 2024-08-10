@@ -1,9 +1,9 @@
 <section class="main w-4/5 border border-solid border-black p-10 rounded-lg">
   <h1 class="font-bold text-3xl mb-10"><%=title%></h1>
   <div class="flex gap-4">
-    <%- include("partials/summary_card", {title: "No. of Games", quantity: "25", route: "/games"})%>
-    <%- include("partials/summary_card", {title: "No. of Genres", quantity: "25", route: "/genres"})%>
-    <%- include("partials/summary_card", {title: "No. of Developers", quantity: "25", route: "/developers"})%>
+    <%- include("partials/summary_card", {title: "No. of Games", quantity: games_qty, route: "/games"})%>
+    <%- include("partials/summary_card", {title: "No. of Genres", quantity: genres_qty, route: "/genres"})%>
+    <%- include("partials/summary_card", {title: "No. of Developers", quantity: devs_qty, route: "/developers"})%>
   </div>
   <hr class="border my-10">
   <div>
@@ -12,11 +12,9 @@
       <%- include("partials/button", {text: "View All", url: "games"}) %>
     </div>
     <div class="grid grid-cols-1 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-4 ">
-      <%- include("partials/game_card", { url: "games/1"})%>
-      <%- include("partials/game_card", { url: "games/2"})%>
-      <%- include("partials/game_card", { url: "games/3"})%>
-      <%- include("partials/game_card", { url: "games/4"})%>
-      <%- include("partials/game_card", { url: "games/5"})%>
+      <%games.map((game) => { %>
+      <%- include("./partials/game_card", { url: `games/${game.id}`, image: `data:${game.imageType};base64,${game.image.toString('base64')}`, name:game.name, developer: game.developers[0]})%>
+      <%})%>
     </div>
   </div>
 </section>

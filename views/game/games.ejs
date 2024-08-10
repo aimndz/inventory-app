@@ -5,11 +5,11 @@
   </div>
   <div>
     <div class="grid grid-cols-1 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-4 ">
-      <%- include("../partials/game_card", { url: "games/1"})%>
-      <%- include("../partials/game_card", { url: "games/2"})%>
-      <%- include("../partials/game_card", { url: "games/3"})%>
-      <%- include("../partials/game_card", { url: "games/4"})%>
-      <%- include("../partials/game_card", { url: "games/5"})%>
+
+      <%games.map((game) => { %>
+      <%- include("../partials/game_card", { url: `games/${game.id}`, image: `data:image/jpeg;base64,${game.image.toString('base64')}`, name:game.name, developer: game.developers[0]})%>
+      <%})%>
+
     </div>
   </div>
 </section>

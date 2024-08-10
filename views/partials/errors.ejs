@@ -1,0 +1,8 @@
+<!-- views/partials/errors.ejs -->
+<% if (locals.errors) {%>
+<ul class="mt-3 text-s ml-5 text-red-600 list-disc">
+  <% errors.forEach(function(error) { %>
+  <li><%= error.msg %></li>
+  <% }); %>
+</ul>
+<% } %>

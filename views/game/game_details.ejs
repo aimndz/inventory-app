@@ -1,31 +1,35 @@
 <section class="main w-4/5 border border-solid border-black p-10 rounded-lg">
   <button class="mb-10">
-    <a href="/developers">
+    <a href="/games">
 
       < Back </a>
   </button>
   <div class="flex gap-3">
     <div class="w-1/3">
-      <img src="/public/images/witcher_3_cover_art.jpg" class="w-full rounded-lg" alt="game image">
+      <img src="<%-`data:${game.imageType};base64,${game.image.toString('base64')}`%>" class=" w-full rounded-lg" alt="game image">
     </div>
     <div class="w-2/3">
       <div class="mb-3">
-        <h1 class="font-bold text-3xl">The Witcher 3: Wild Hunt</h1>
-        <p>CD Projekt</p>
+        <h1 class="font-bold text-3xl"><%=game.name%></h1>
+        <p><%= game.developers.join(", ") %></p>
       </div>
-      <div class="flex  gap-3 mb-3">
-        <h2 class="font-bold">Release Date:</h2>
-        <p>Jan 24, 2024</p>
+      <div class="flex  gap-3 mb-3">
+        <h2 class="font-bold">Release Date:&nbsp;</h2>
+        <p>
+          <%= new Date(game.release_date).toLocaleDateString('en-US', { year: 'numeric', month: 'long', day: 'numeric' }) %>
+        </p>
       </div>
+
       <div class="mb-3">
         <h2 class="font-bold">Description:</h2>
-        <p class="max-w-3xl">Lorem ipsum dolor sit amet consectetur adipisicing elit. Maxime est nostrum voluptatibus temporibus nobis laudantium harum rerum dolor laboriosam quaerat!</p>
+        <p class="max-w-3xl"><%=game.description%></p>
       </div>
       <div class="mb-3">
         <h2 class="font-bold">Genre:</h2>
         <ul class="flex gap-3">
-          <li class="bg-gray-300 p-3 rounded-lg text-xs">Action</li>
-          <li class="bg-gray-300 p-3 rounded-lg text-xs">Adventure</li>
+          <%game.genres.map((genre) => { %>
+          <li class="bg-gray-300 p-2 rounded-lg text-xs"><%=genre%></li>
+          <%}) %>
         </ul>
       </div>
       <div class="flex gap-3 mb-3">

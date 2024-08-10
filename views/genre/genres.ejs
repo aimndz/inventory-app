@@ -3,13 +3,11 @@
     <h1 class="font-bold text-3xl"><%=title%></h1>
     <%- include("../partials/button", {text: "+ Add", url: "genres/create"}) %>
   </div>
-  <div>
-    <div class="grid grid-cols-1 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-4 ">
+  <div class="grid grid-cols-1 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-4 ">
 
-      <% genres.map((genre) => { %>
-      <%- include('../partials/detail_button', {text: genre.title, quantity: genre.quantity, url: `/genres/${genre.id}`}) %>
-      <% }) %>
+    <% genres.map((genre) => { %>
+    <%- include('../partials/detail_button', {text: genre.name, quantity: genre.game_count, url: `/genres/${genre.id}`}) %>
+    <% }) %>
 
-    </div>
   </div>
 </section>
