@@ -6,7 +6,10 @@
   </button>
   <div class="flex justify-between mb-3">
     <h1 class="font-bold text-3xl"><%=title%></h1>
-    <%- include("../partials/button", {text: "Delete", url: "/games/delete"}) %>
+    <div class="flex gap-3">
+      <a href="<%=id%>/update"><button class="p-3 min-w-24 bg-blue-300 rounded-lg shadow-xl">Edit</button></a>
+      <a href=""><button class="p-3 min-w-24 bg-red-400 rounded-lg shadow-xl">Delete</button></a>
+    </div>
   </div>
   <div class="font-bold mb-3">
     <p>Total: <%= quantity %></p>

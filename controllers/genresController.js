@@ -75,6 +75,7 @@ exports.genre_detail = asyncHandler(async (req, res) => {
 
   res.render("index", {
     title: genre[0].name,
+    id: req.params.id,
     content: "genre/genre_detail",
     games: allGenreGames,
     quantity: allGenreGames.length,
@@ -82,12 +83,46 @@ exports.genre_detail = asyncHandler(async (req, res) => {
 });
 
 exports.genre_update_get = asyncHandler(async (req, res) => {
-  // NOT YET IMPLEMENTED
+  const genre = await db.getGenreById(req.params.id);
+  
+  res.render("index", {
+    title: `Update ${genre[0].name}`,
+    id: genre[0].id,
+    name: genre[0].name,
+    content: "genre/genre_update",
+  });
 })
 
-exports.genre_update_post = asyncHandler(async (req, res) => {
-  // NOT YET IMPLEMENTED
-})
+exports.genre_update_post = [ 
+  body("genre_name", "Genre name must contain at least 3 characters")
+    .trim()
+    .isLength({min: 3})
+    .escape(),
+  body("genre_name").custom(async (value) => {
+    const existingGenre = await db.getGenreByName(value.toLowerCase());
+
+    if(existingGenre.length) {
+      throw new Error("Genre name already exists");
+    }
+  }),
+  asyncHandler(async (req, res) => {
+    const errors = validationResult(req);
+    if (!errors.isEmpty()){
+      return res.status(400).render("index", {
+        title: "Add New Genre",
+        content: "genre/genre_create",
+        errors: errors.array()
+      })
+    }
+    const genre_id = req.params.id;
+    const {genre_name} = req.body;
+  
+    await db.updateGenre(genre_id, genre_name);
+  
+    res.redirect(`/genres/${req.params.id}/update`);
+  })
+];
+
 
 exports.genre_delete_get = asyncHandler(async (req, res) => {
   // NOT YET IMPLEMENTED

@@ -16,7 +16,7 @@
       <div class="flex  gap-3 mb-3">
         <h2 class="font-bold">Release Date:&nbsp;</h2>
         <p>
-          <%= new Date(game.release_date).toLocaleDateString('en-US', { year: 'numeric', month: 'long', day: 'numeric' }) %>
+          <%= new Date(game.release_date).toISOString().slice(0, 10) %>
         </p>
       </div>
 
@@ -33,7 +33,7 @@
         </ul>
       </div>
       <div class="flex gap-3 mb-3">
-        <button class="p-3 max-w-28 w-full bg-blue-300 rounded-lg shadow-xl">Edit</button>
+        <a href="<%=id%>/update"><button class="p-3 min-w-24 bg-blue-300 rounded-lg shadow-xl">Edit</button></a>
         <button class="p-3 max-w-28 w-full bg-red-400 rounded-lg shadow-xl">Delete</button>
       </div>
     </div>

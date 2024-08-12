@@ -133,8 +133,29 @@ exports.getAllRecentGames = async () => {
         LIMIT 5;`
     );
 
-    console.log(rows)
-
     return rows;
 }
 
+exports.updateGenre = async (genre_id, genre_name) => {
+    await pool.query(
+        "UPDATE genres SET name = $1 WHERE id = $2", [genre_name, genre_id]
+    );
+}
+
+exports.updateDeveloper = async (developer_id, developer_name) => {
+    await pool.query(
+        "UPDATE developers SET name = $1 WHERE id = $2", [developer_name, developer_id]
+    );
+}
+
+exports.updateGame = async (game_name, release_date, developer, genre, description, game_id) => {
+    await pool.query(
+        `UPDATE games
+        SET name = $1,
+        release_date = $2,
+        developer = $3,
+        genre = $4,
+        description = $5
+        WHERE id = $6`, [game_name, release_date, developer, genre, description, game_id]
+    );
+}

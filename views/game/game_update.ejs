@@ -1,0 +1,55 @@
+<section class="main w-4/5 border border-solid border-black p-10 rounded-lg">
+  <button class="mb-10">
+    <a href="/games">
+
+      < Back </a>
+  </button>
+  <div class="flex justify-between mb-3">
+    <h1 class="font-bold text-3xl"><%=title%></h1>
+  </div>
+  <div class="max-w-xl">
+    <form action="/games/<%=id%>/update" method="POST">
+      <div class="flex gap-3 mb-5">
+        <div class="w-full">
+          <label for="game_name" class="font-bold">Game Name</label>
+          <input id="game_name" type="text" name="game_name" class="bg-gray-300 rounded-lg p-3 w-full" value="<%=game.name%>" placeholder="Enter a game name...">
+        </div>
+        <div class="w-full">
+          <label for="release_date" class="font-bold">Release Date</label>
+          <input id="release_date" type="date" name="release_date" class="bg-gray-300 rounded-lg p-3 w-full" value="<%=formatted_date%>">
+        </div>
+      </div>
+      <!-- <div class="mb-5">
+        <label class="font-bold" for="image" class="block">Poster</label>
+        <input id="image" type="file" name="image" class="block">
+      </div> -->
+      <div>
+        <h2 class="font-bold">Developer/s</h2>
+        <div class="grid grid-cols-2 mb-5">
+          <%developers.map((developer, index) => { %>
+          <div>
+            <input id="dev-<%=index%>" type="checkbox" name="developer" value="<%=developer.id%>" class=" bg-gray-300 rounded-lg p-3 max-w-96" <%=game.developers.includes(developer.name) ? "checked" : ""%>>
+            <label for="dev-<%=index%>"><%=developer.name%></label>
+          </div>
+          <% }) %>
+        </div>
+      </div>
+      <div>
+        <h2 class="font-bold">Genre/s</h2>
+        <div class="grid grid-cols-2 mb-5">
+          <%genres.map((genre, index) => { %>
+          <div>
+            <input id="genre-<%=index%>" type="checkbox" name="genre" value="<%=genre.id%>" class="bg-gray-300 rounded-lg p-3 max-w-96" <%=game.genres.includes(genre.name) ? "checked" : ""%>>
+            <label for="genre-<%=index%>"><%=genre.name%></label>
+          </div>
+          <% }) %>
+        </div>
+      </div>
+      <div>
+        <label for="description" class="font-bold">Description</label>
+        <textarea name="description" id="description" class="block bg-gray-300 rounded-lg p-3 w-full" rows="8" placeholder="Enter a description..."><%=game.description%></textarea>
+      </div>
+      <button type="submit" class="py-3 px-10 bg-blue-300 rounded-lg font-bold mt-5">Save</button>
+    </form>
+  </div>
+</section>
