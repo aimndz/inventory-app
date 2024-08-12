@@ -159,3 +159,15 @@ exports.updateGame = async (game_name, release_date, developer, genre, descripti
         WHERE id = $6`, [game_name, release_date, developer, genre, description, game_id]
     );
 }
+
+exports.deleteGameById = async (id) => {
+    await pool.query(`DELETE FROM games WHERE id = $1`, [id]);
+}
+
+exports.deleteGenreById = async (id) => {
+    await pool.query(`DELETE FROM genres WHERE id = $1`, [id]);
+}
+
+exports.deleteDeveloperById = async (id) => {
+    await pool.query(`DELETE FROM developers WHERE id = $1`, [id]);
+}

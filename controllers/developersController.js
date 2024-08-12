@@ -121,9 +121,18 @@ exports.developer_update_post = [
 })];
 
 exports.developer_delete_get = asyncHandler(async (req, res) => {
-  // NOT YET IMPLEMENTED
+  const developer = await db.getDeveloperById(req.params.id);
+
+  res.render("index", {
+    title: `${developer[0].name}`,
+    content: "developer/developer_delete",
+    id: req.params.id,
+    developer: developer[0],
+   });
 })
 
 exports.developer_delete_post = asyncHandler(async (req, res) => {
-  // NOT YET IMPLEMENTED
+  await db.deleteDeveloperById(req.params.id);
+
+  res.redirect("/developers");
 })

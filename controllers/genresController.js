@@ -123,11 +123,19 @@ exports.genre_update_post = [
   })
 ];
 
-
 exports.genre_delete_get = asyncHandler(async (req, res) => {
-  // NOT YET IMPLEMENTED
+  const genre = await db.getGenreById(req.params.id);
+
+  res.render("index", {
+    title: `${genre[0].name}`,
+    content: "genre/genre_delete",
+    id: req.params.id,
+    genre: genre[0],
+   });
 })
 
 exports.genre_delete_post = asyncHandler(async (req, res) => {
-  // NOT YET IMPLEMENTED
+  await db.deleteGenreById(req.params.id);
+
+  res.redirect("/genres");
 })

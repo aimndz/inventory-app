@@ -1,0 +1,17 @@
+<section class="main w-4/5 border border-solid border-black p-10 rounded-lg">
+  <button class="mb-10">
+    <a href="/games/<%=id%>">
+
+      < Back </a>
+  </button>
+  <div class="mb-3">
+    <h1 class="font-bold text-3xl">Delete <%=title%></h1>
+    <p>Are you sure you want to delete <strong><i><%=title%></i></strong>?</p>
+  </div>
+  <div class="max-w-xl flex gap-3">
+    <a href="/games/<%=id%>"><button type="submit" class="py-3 px-10 bg-blue-300 rounded-lg font-bold mt-5 cursor shadow-xl">Cancel</button></a>
+    <form action="/games/<%=id%>/delete" method="POST">
+      <button type="submit" class="py-3 px-10 bg-red-400 rounded-lg font-bold mt-5 cursor shadow-xl">Delete</button>
+    </form>
+  </div>
+</section>

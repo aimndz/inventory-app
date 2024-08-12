@@ -191,12 +191,20 @@ exports.game_update_post =  [
   })
 ]
 
-
-
 exports.game_delete_get = asyncHandler(async (req, res) => {
-  // NOT YET IMPLEMENTED
+  const game = await db.getGamesById(req.params.id);
+
+
+  res.render("index", {
+    title: `${game[0].name}`,
+    content: "game/game_delete",
+    id: req.params.id,
+    game: game[0],
+   });
 })
 
 exports.game_delete_post = asyncHandler(async (req, res) => {
-  // NOT YET IMPLEMENTED
+  await db.deleteGameById(req.params.id);
+
+  res.redirect("/games");
 })

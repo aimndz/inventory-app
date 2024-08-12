@@ -8,7 +8,23 @@
     <h1 class="font-bold text-3xl"><%=title%></h1>
     <div class="flex gap-3">
       <a href="<%=id%>/update"><button class="p-3 min-w-24 bg-blue-300 rounded-lg shadow-xl">Edit</button></a>
-      <a href=""><button class="p-3 min-w-24 bg-red-400 rounded-lg shadow-xl">Delete</button></a>
+      <% if (!games.length > 0) { %>
+      <a href="<%=id%>/delete">
+        <% } %>
+        <button class=" p-3 min-w-24 rounded-lg shadow-xl relative
+            <% if (!games.length > 0) { %>
+              bg-red-400
+            <% } else { %>
+              text-gray-400 shadow-gray-400 bg-gray-300
+              hover:before:content-['Please_delete_associated_games_first']
+              before:text-xs before:absolute before:top-[-70px] before:left-[0]
+              before:bg-gray-300 hover:before:p-2 before:w-full before:rounded-md
+              before:opacity-0 hover:before:opacity-100
+              before:text-gray-500 cursor-not-allowed before:origin-center
+              before:transition-all before:duration-300
+            <% } %>">
+          Delete
+        </button></a>
     </div>
   </div>
   <div class="font-bold mb-3">
