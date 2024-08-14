@@ -1,5 +1,6 @@
 const express = require("express");
 const path = require("path");
+require('dotenv').config();
 
 const indexRouter = require("./routes/indexRouter");
 const genresRouter = require("./routes/genresRouter");
@@ -27,5 +28,5 @@ app.use("/genres", genresRouter);
 app.use("/games", gamesRouter);
 app.use("/developers", developersRouter);
 
-const PORT = 3000;
+const PORT = process.env.PORT || 80;
 app.listen(PORT, () => console.log(`Listening on Port: ${PORT}`));
